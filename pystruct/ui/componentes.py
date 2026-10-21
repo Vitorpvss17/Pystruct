@@ -4,12 +4,10 @@ from __future__ import annotations
 import tkinter as tk
 from tkinter import messagebox, ttk
 
+from ..formatacao import formatar, ler_numero
+
 FONTE = ("Arial", 10)
 FONTE_TITULO = ("Arial", 11, "bold")
-
-
-def formatar(valor: float, casas: int = 3) -> str:
-    return f"{valor:.{casas}f}".replace(".", ",")
 
 
 def mostrar_erro(janela: tk.Misc, erro: Exception) -> None:
@@ -33,11 +31,7 @@ class Campo:
         self.entry.grid(row=row, column=coluna + 1, sticky="w", padx=5, pady=2)
 
     def valor(self) -> float:
-        texto = self.var.get().strip().replace(",", ".")
-        try:
-            return float(texto)
-        except ValueError:
-            raise ValueError(f"O campo \"{self.rotulo}\" deve ser um número.") from None
+        return ler_numero(self.var.get(), self.rotulo)
 
     def definir(self, valor: float) -> None:
         self.var.set(formatar(valor))

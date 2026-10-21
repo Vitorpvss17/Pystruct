@@ -4,6 +4,8 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
+from ..formatacao import formatar
+
 DIAMETRO_BRITA = 1.9  # cm (brita 1)
 
 ESPACAMENTO_MAX_PRINCIPAL = 20.0  # cm
@@ -26,7 +28,7 @@ class ArmaduraLaje:
     def descricao(self) -> str:
         if not self.permitido:
             return self.motivo
-        return f"N01 D/: {self.n_barras}, c/ {self.espacamento:.1f} cm"
+        return f"N01 D/: {self.n_barras}, c/ {formatar(self.espacamento, 1)} cm"
 
 
 def armadura_principal_laje(as_: float, bitola_mm: float, espessura: float) -> ArmaduraLaje:

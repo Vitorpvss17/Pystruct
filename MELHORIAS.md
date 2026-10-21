@@ -23,7 +23,9 @@ Legenda: ✅ concluído · 🔄 em andamento · ⬜ pendente · ❓ precisa de d
 | ✅ | Usar o resultado da análise da viga no dimensionamento | Lista de momentos + botão "Dimensionar este momento" preenche Mk (2026-10-21) |
 | ✅ | Cálculo de vigas com balanço | Momento do balanço entra como momento conhecido no apoio extremo; conferido com a equação dos três momentos (2026-10-21) |
 | ✅ | Unificar Rampa e Escada (ambas são laje inclinada) | `calculo/laje_inclinada.py` e `ui/janela_laje_inclinada.py`; diferenças da seção 5 preservadas (2026-10-21) |
-| ⬜ | Trocar a interface tkinter por Flet | Multiplataforma (desktop, web, Android/iOS) reaproveitando `calculo/` em Python |
+| 🔄 | Trocar a interface tkinter por Flet | `pystruct/app/`. Rampa e Escada prontas e testadas no navegador; falta a Viga (análise com diagrama, dimensionamento, exportações) |
+| ⬜ | Remover `pystruct/ui/` (tkinter) e o `ttkbootstrap` | Depois que a Viga estiver no Flet |
+| ⬜ | Testar o app no celular | `flet run --android` / `--ios` com o app Flet no aparelho |
 | ⬜ | Gerar executável/instaladores | Com Flet: `flet build windows/apk/web` |
 
 ## 2. Testes e qualidade
@@ -34,7 +36,7 @@ Legenda: ✅ concluído · 🔄 em andamento · ⬜ pendente · ❓ precisa de d
 | ✅ | Validar a viga contínua com casos de tabela e a equação dos três momentos | |
 | ✅ | Teste de regressão do script do AutoCAD contra o `Viga.scr` antigo | |
 | ⬜ | Validar com exemplos resolvidos do TCC/apostila (rampa, escada, viga) | Comparar números finais |
-| ✅ | Testes para os casos de erro da interface | `tests/test_interface.py`: campos inválidos, divisões por zero, fluxo análise → dimensionamento. Total: 45 testes (2026-10-21) |
+| ✅ | Testes para os casos de erro da interface | `tests/test_interface.py`: campos inválidos, divisões por zero, fluxo análise → dimensionamento. Mais `tests/test_app.py` para as telas Flet. Total: 50 testes (2026-10-21) |
 
 ## 3. Higiene do repositório
 
@@ -43,6 +45,7 @@ Legenda: ✅ concluído · 🔄 em andamento · ⬜ pendente · ❓ precisa de d
 | ✅ | `.gitignore` (venv, build, .idea, arquivos gerados) | |
 | ✅ | `requirements.txt` corrigido | Removidos `future`/`PyAutoGUI`; incluídos `numpy`/`matplotlib` |
 | ✅ | `pyproject.toml` e `README.md` | Python mínimo passou para 3.10 (`dataclass(kw_only=True)`) |
+| ✅ | `fastapi<0.145` no `requirements.txt` | O `flet-web` 1.0.4 quebra com FastAPI mais novo (`openapi_prefix`) |
 | ✅ | Ambiente virtual `.venv` na raiz | O Python global tem conflito numpy 2 × matplotlib antigo |
 
 ## 4. Bugs corrigidos (mudam resultados)
@@ -80,5 +83,5 @@ Mantidos como no código original até você decidir:
 ## Histórico
 
 - **2026-10-20**: Separação front/back, nova estrutura de pastas, solver de viga contínua generalizado, testes, correção dos bugs da seção 4.
-- **2026-10-21**: Primeiro commit da reorganização no GitHub; decisão de migrar a interface para Flet.
+- **2026-10-21**: Primeiro commit da reorganização no GitHub; início da migração para Flet (rampa e escada).
 - **2026-10-21**: Rampa e escada unificadas como laje inclinada, viga com balanços, momento da análise enviado ao dimensionamento, testes da interface.

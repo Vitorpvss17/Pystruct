@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from ..calculo.laje_inclinada import SecaoLaje
-from .componentes import Campo, JanelaEstrutura, Saida, mostrar_erro, titulo_secao
+from .componentes import Campo, JanelaEstrutura, Saida, formatar, mostrar_erro, titulo_secao
 
 
 class JanelaLajeInclinada(JanelaEstrutura):
@@ -98,7 +98,7 @@ class JanelaLajeInclinada(JanelaEstrutura):
         self.s_md.mostrar(res.md)
         self.s_x.mostrar(res.flexao.x)
         self.s_norma.mostrar(
-            f"x/d = {res.flexao.x_d:.3f} - " + ("permitida" if res.flexao.ductil else "não permitida")
+            f"x/d = {formatar(res.flexao.x_d)} - " + ("permitida" if res.flexao.ductil else "não permitida")
         )
         self.mostrar_area_aco(res)
         self.s_principal.mostrar(res.principal.descricao())

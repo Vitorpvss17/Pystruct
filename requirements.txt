@@ -1,4 +1,7 @@
 numpy>=2.0
 matplotlib>=3.9
 ttkbootstrap>=1.10
+flet[all]==1.0.4
+# flet-web 1.0.4 usa o parâmetro openapi_prefix, removido no FastAPI 0.145
+fastapi<0.145
 pytest>=8

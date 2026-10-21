@@ -252,7 +252,7 @@ class PaginaDimensionamento(ttk.Frame):
         self.s_d.mostrar(res.d)
         self.s_x.mostrar(res.flexao.x)
         self.s_norma.mostrar(
-            f"x/d = {res.flexao.x_d:.3f} - " + ("permitida" if res.flexao.ductil else "não permitida")
+            f"x/d = {formatar(res.flexao.x_d)} - " + ("permitida" if res.flexao.ductil else "não permitida")
         )
         self.s_as.mostrar(res.flexao.as_calc)
         self.s_as_min.mostrar(res.flexao.as_min)

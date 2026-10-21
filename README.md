@@ -11,8 +11,13 @@ Programa de dimensionamento de estruturas de concreto armado desenvolvido como T
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
-python -m pystruct
+
+python -m pystruct.app        # app novo (Flet): rampa e escada
+python -m pystruct            # versão desktop antiga (tkinter): todas as estruturas
 ```
+
+O app novo é feito em [Flet](https://flet.dev) e roda no Windows, macOS, Linux, web,
+Android e iOS. A viga ainda está sendo migrada; até lá ela só existe na versão tkinter.
 
 ## Testes
 
@@ -26,8 +31,9 @@ pytest
 pystruct/
 ├── calculo/     # back-end: fórmulas puras, sem interface (testáveis)
 ├── export/      # geração de arquivos (script do AutoCAD, memória de cálculo)
-└── ui/          # front-end Tkinter: lê os campos, chama o back-end e mostra resultados
-tests/           # testes automatizados do back-end e da interface
+├── app/         # front-end Flet (multiplataforma), substituindo aos poucos o ui/
+└── ui/          # front-end Tkinter antigo
+tests/           # testes automatizados do back-end e das duas interfaces
 ```
 
 A interface nunca faz contas: cada janela monta um objeto `Dados...`, chama
