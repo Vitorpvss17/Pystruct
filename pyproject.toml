@@ -1,0 +1,9 @@
+[project]
+name = "pystruct"
+version = "0.2.0"
+description = "Dimensionamento de rampas, escadas e vigas de concreto armado"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

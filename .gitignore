@@ -1,0 +1,19 @@
+# ambientes virtuais
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# IDEs
+.idea/
+
+# arquivos gerados pelo programa
+*.scr
+memoria_viga.txt
+bloco_notas.txt
